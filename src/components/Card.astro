@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  food: CollectionEntry<"food"> | CollectionEntry<"apiFood">;
+};
+const { food } = Astro.props;
+
+const { data } = food;
+---
+
+<article class="grid gap-2 shadow-lg rounded-xl border-2 p-4">
+  <img
+    src={data.thumbnail}
+    alt={data.title}
+    class="w-full h-full object-cover"
+  />
+  <p class="text-3xl font-bold">{data.title}</p>
+  <p class="line-clamp-6">{data.instructions}</p>
+  {
+    data.tags && (
+      <p>
+        <strong>Tags: </strong>{" "}
+        <span>{new Intl.ListFormat().format(data.tags)}</span>
+      </p>
+    )
+  }
+</article>

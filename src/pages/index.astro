@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Card from "../components/Card.astro";
+
+const foods = await getCollection("food");
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body class="container py-4">
+    <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 items-start">
+      {foods.map((food) => <Card food={food} />)}
+    </div>
+  </body>
+</html>
