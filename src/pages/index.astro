@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Card from "../components/Card.astro";
 
 const foods = await getCollection("food");
+const apiFoods = await getCollection("apiFood");
 ---
 
 <html lang="en">
@@ -15,7 +16,7 @@ const foods = await getCollection("food");
   </head>
   <body class="container py-4">
     <div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 items-start">
-      {foods.map((food) => <Card food={food} />)}
+      {apiFoods.map((food) => <Card food={food} />)}
     </div>
   </body>
 </html>
